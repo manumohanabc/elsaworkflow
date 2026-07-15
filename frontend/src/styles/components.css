@@ -1,0 +1,399 @@
+/* Login Form */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.login-card {
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-card h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #333;
+}
+
+.form-group input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
+}
+
+.login-button {
+  padding: 12px;
+  background-color: #667eea;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-button:hover {
+  background-color: #5568d3;
+}
+
+.login-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.demo-credentials {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+  font-size: 12px;
+  color: #666;
+}
+
+.demo-credentials p {
+  margin: 5px 0;
+}
+
+/* Workflow List */
+.workflow-list {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.workflow-list h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.workflow-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.workflow-card {
+  background: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+
+.workflow-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.workflow-card h3 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.workflow-description {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.workflow-tasks {
+  color: #999;
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+
+.execute-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.execute-button:hover {
+  background-color: #45a049;
+}
+
+.execute-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Workflow Executor */
+.executor-container {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.executor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 15px;
+}
+
+.executor-header h2 {
+  margin: 0;
+  color: #333;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #999;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-button:hover {
+  color: #333;
+}
+
+.executor-info {
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.executor-info p {
+  margin: 8px 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.connected {
+  color: #4CAF50;
+  font-weight: 600;
+}
+
+.disconnected {
+  color: #f44336;
+  font-weight: 600;
+}
+
+.executor-controls {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Execution Monitor */
+.monitor-container {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.execution-header {
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.execution-header h3 {
+  color: #333;
+  margin: 0 0 10px 0;
+}
+
+.execution-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  font-size: 13px;
+}
+
+.execution-meta p {
+  margin: 0;
+  color: #666;
+}
+
+.tasks-container {
+  margin-bottom: 20px;
+}
+
+.tasks-container h4 {
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.task-item {
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 12px;
+  overflow: hidden;
+}
+
+.task-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.task-status {
+  padding: 4px 8px;
+  border-radius: 3px;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.task-header h5 {
+  flex: 1;
+  margin: 0;
+  color: #333;
+  font-size: 14px;
+}
+
+.task-duration {
+  color: #999;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.task-output {
+  background: #f0f0f0;
+  padding: 8px;
+  border-radius: 3px;
+  font-family: monospace;
+  font-size: 11px;
+  color: #333;
+  margin-top: 8px;
+}
+
+.task-error {
+  background: #ffebee;
+  color: #c62828;
+  padding: 8px;
+  border-radius: 3px;
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+.execution-output {
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.execution-output h4 {
+  color: #333;
+  margin: 0 0 10px 0;
+}
+
+.execution-output pre {
+  background: white;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 12px;
+  color: #333;
+  overflow-x: auto;
+  margin: 0;
+}
+
+.monitor-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 15px;
+}
+
+.cancel-button {
+  padding: 8px 16px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.cancel-button:hover {
+  background-color: #d32f2f;
+}
+
+/* Common */
+.loading {
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  text-align: center;
+  color: #666;
+}
+
+.error-message {
+  background: #ffebee;
+  color: #c62828;
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  border-left: 4px solid #c62828;
+}
