@@ -26,50 +26,73 @@ git branch -M main
 git push -u origin main
 ```
 
-### 2️⃣ Deploy on Render
-
-**Option A: One-Click Blueprint (Easiest)**
-
-1. Go to: https://render.com/i/c/add-blueprint
-2. Paste repository URL
-3. Confirm settings
-4. Click "Create"
-5. Wait ~20 minutes for deployment
-
-**Option B: Manual Deploy**
+### 2️⃣ Deploy Backend on Render
 
 1. Go to: https://dashboard.render.com
-2. Click "New +" → "Web Service" (for backend)
-3. Select GitHub repo
+2. Click **"New +"** → **"Web Service"**
+3. Connect GitHub repository
 4. Configure:
-   - Name: `elsaworkflow-api`
-   - Environment: `Dotnet`
-   - Build: `cd backend/ElsaWorkflow.Api && dotnet publish -c Release`
-   - Start: `./out/ElsaWorkflow.Api`
-5. Click "Create Web Service"
-6. Wait for deployment
-7. Click "New +" → "Static Site" (for frontend)
-8. Configure:
-   - Name: `elsaworkflow-ui`
-   - Build: `cd frontend && npm install && npm run build`
-   - Publish Dir: `frontend/dist`
-9. Click "Create Static Site"
+   - **Name**: `elsaworkflow-api`
+   - **Environment**: `Dotnet`
+   - **Build Command**: `cd backend/ElsaWorkflow.Api && dotnet publish -c Release`
+   - **Start Command**: `./out/ElsaWorkflow.Api`
+   - **Instance Type**: `Free` (or Starter for production)
+5. Click **"Create Web Service"**
+6. ⏳ Wait ~10-15 minutes for deployment
+7. 📝 Note the backend URL (e.g., `https://elsaworkflow-api.onrender.com`)
+
+### 2B️⃣ Deploy Frontend on Render
+
+1. Go to: https://dashboard.render.com
+2. Click **"New +"** → **"Web Service"**
+3. Connect same GitHub repository
+4. Configure:
+   - **Name**: `elsaworkflow-ui`
+   - **Environment**: `Node`
+   - **Build Command**: `cd frontend && npm install && npm run build`
+   - **Start Command**: `npx serve -s dist -l 3000`
+   - **Instance Type**: `Free`
+5. Click **"Create Web Service"**
+6. ⏳ Wait ~5-10 minutes for deployment
+7. 📝 Note the frontend URL (e.g., `https://elsaworkflow-ui.onrender.com`)
 
 ### 3️⃣ Set Environment Variables
 
-**Backend** (`elsaworkflow-api`):
-```
-ASPNETCORE_ENVIRONMENT=Production
-ASPNETCORE_URLS=http://0.0.0.0:10000
-JWT_SECRET_KEY=<generate-random-key>
-CORS_ALLOWED_ORIGINS=https://elsaworkflow-ui.onrender.com
-```
+#### Backend (`elsaworkflow-api`)
 
-**Frontend** (`elsaworkflow-ui`):
-```
-VITE_API_URL=https://elsaworkflow-api.onrender.com/api
-VITE_SIGNALR_URL=https://elsaworkflow-api.onrender.com
-```
+After backend deployment completes:
+
+1. Go to Render Dashboard → `elsaworkflow-api`
+2. Click **"Environment"** tab
+3. Add these variables:
+
+| Key | Value |
+|-----|-------|
+| `ASPNETCORE_ENVIRONMENT` | `Production` |
+| `ASPNETCORE_URLS` | `http://0.0.0.0:10000` |
+| `JWT_SECRET_KEY` | `generate-random-32-char-key` |
+| `CORS_ALLOWED_ORIGINS` | `https://elsaworkflow-ui.onrender.com` |
+
+4. Click **"Save"**
+5. Service will auto-redeploy
+
+#### Frontend (`elsaworkflow-ui`)
+
+After frontend deployment completes:
+
+1. Go to Render Dashboard → `elsaworkflow-ui`
+2. Click **"Environment"** tab
+3. Add these variables:
+
+| Key | Value |
+|-----|-------|
+| `VITE_API_URL` | `https://elsaworkflow-api.onrender.com/api` |
+| `VITE_SIGNALR_URL` | `https://elsaworkflow-api.onrender.com` |
+
+4. Click **"Save"**
+5. Service will auto-redeploy
+
+> **Note**: Get the backend URL from the backend service page after it deploys.
 
 ### 4️⃣ Test
 
