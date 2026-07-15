@@ -1,0 +1,37 @@
+services:
+  - type: web
+    name: elsaworkflow-api
+    env: dotnet
+    region: oregon
+    plan: free
+    buildCommand: cd backend/ElsaWorkflow.Api && dotnet publish -c Release -o out
+    startCommand: ./out/ElsaWorkflow.Api
+    healthCheckPath: /api/auth/login
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: ASPNETCORE_URLS
+        value: http://0.0.0.0:10000
+      - key: JWT_SECRET_KEY
+        sync: false
+      - key: CORS_ALLOWED_ORIGINS
+        value: http://localhost:5173,http://localhost:3000
+    routes:
+      - path: /
+        matchType: prefix
+
+  - type: static_site
+    name: elsaworkflow-ui
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://elsaworkflow-api.onrender.com/api
+      - key: VITE_SIGNALR_URL
+        value: https://elsaworkflow-api.onrender.com
+    routes:
+      - path: /
+        matchType: prefix
